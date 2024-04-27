@@ -6,3 +6,10 @@ class Product(BaseModel):
     email: str
     product_name: str
     description: str
+
+
+class Model(BaseModel):
+    name: str
+    description: str
+    class Config:
+        orm_mode = True
