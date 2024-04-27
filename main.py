@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from fastapi.params import Depends
 
-from Model.Product import Product
-from Model.database import engine, SessionLocal
+from DB_Design.ProductRequest import Product
+from DB_Design.DBConnection import engine, SessionLocal
 from sqlalchemy.orm import Session
-from Model.product_table import Base, ProductDetails
+from DB_Design.ProductResponse import Base, ProductDetails
 
 app = FastAPI()
 

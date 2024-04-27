@@ -1,5 +1,5 @@
 from sqlalchemy import INTEGER, VARCHAR, Column
-from .database import Base
+from .DBConnection import Base
 
 
 class ProductDetails(Base):
