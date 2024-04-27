@@ -46,7 +46,7 @@ def product(id, db: Session = Depends(get_db)):
     return product
 
 
-# delete the row
+# delete specific the row
 @app.delete("/product/{id}")
 def delete_product(id, db: Session = Depends(get_db)):
     product_delete = db.query(ProductDetails).filter(ProductDetails.id == id).delete(synchronize_session=False)
