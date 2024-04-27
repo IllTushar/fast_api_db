@@ -44,3 +44,11 @@ def all_products_list(db: Session = Depends(get_db)):
 def product(id, db: Session = Depends(get_db)):
     product = db.query(ProductDetails).filter(ProductDetails.id == id).first()
     return product
+
+
+# delete the row
+@app.delete("/product/{id}")
+def delete_product(id, db: Session = Depends(get_db)):
+    product_delete = db.query(ProductDetails).filter(ProductDetails.id == id).delete(synchronize_session=False)
+    db.commit()
+    return {"message": "Product deleted successful", "deleted_product": product_delete}
