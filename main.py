@@ -1,4 +1,4 @@
-from fastapi import FastAPI, status,HTTPException
+from fastapi import FastAPI, status, HTTPException
 from fastapi.params import Depends
 
 from DB_Design.schema import Product, Model
@@ -45,7 +45,7 @@ def all_products_list(db: Session = Depends(get_db)):
 def product(id, db: Session = Depends(get_db)):
     product = db.query(ProductDetails).filter(ProductDetails.id == id).first()
     if not product:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="Product not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
     return product
 
 
