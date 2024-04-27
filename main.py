@@ -52,3 +52,16 @@ def delete_product(id, db: Session = Depends(get_db)):
     product_delete = db.query(ProductDetails).filter(ProductDetails.id == id).delete(synchronize_session=False)
     db.commit()
     return {"message": "Product deleted successful", "deleted_product": product_delete}
+
+
+# update data
+@app.put("/product/{id}")
+def update_product(id, products: Product, db: Session = Depends(get_db)):
+
+        product_update = db.query(ProductDetails).filter(ProductDetails.id == id)
+        if not product_update.first():
+            pass
+            # return {"message": "Product not found"}  # Return a message if product not found
+        product_update.update(products.dict())
+        db.commit()
+        return {"message": "Product updated successfully"}  # Return success message Return the error messagev
